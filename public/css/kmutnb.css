@@ -1,0 +1,17 @@
+.header-kmutnb{
+    background-image: url("Header.jpg");
+    width: 100%;
+    height: 250px;
+  }
+  .bs_table{
+    margin:0;
+
+  }
+  .bs_table thead tr th{
+    color:#fff;
+    background-color: #999;
+    
+  }
+  .btnSearch{
+    width:250px;
+  }
