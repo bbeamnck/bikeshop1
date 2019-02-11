@@ -1,26 +1,4 @@
-@extends("layouts.master")
-@section('title') Bikeshop | แก้ไขข้อมูลสินค้า@stop
-@section('content')
-<h1>แก้ไขสินค้า</h1>
-<ul class="breadcrumb">
-    <li><a href="{{ URL::to('product') }}">หน้าแรก</a></li>
-    <li class="active">แก้ไขสินค้า</li>
-
-</ul>
-@if($errors->any())
-<div class="alert alert-danger">
-        @foreach ($errors->all() as $error)<div>{{ $error }}</div>@endforeach 
-</div>
-@endif
-{!! Form::model($product,array('action' => 'ProductController@update','method' => 'post','enctype' => 'multipart/form-data')) !!}
-<input type="hidden" name="id" value="{{ $product->id }}">
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <div class="panel-title">
-            <strong>ข้อมูลสินค้า</strong>
-        </div>
-    </div>
-    <div class="panel-body">
+{!! Form::open(array('action' => 'ProductController@insert','method' => 'post','enctype' => 'multipart/form-data')) !!}
             <table>
                 <tr>
                     <td>{{ Form::label('code','รหัสสินค้า') }}</td>
@@ -46,18 +24,11 @@
                     <td>{{ Form::label('image','เลือกรูปภาพสินค้า') }}</td>
                     <td>{{ Form::file('image')}}</td>
                 </tr>
-                @if($product->image_url)
-                <tr>
-                    <td><strong>รูปสินค้า</strong>
-                    <td><img src="{{ URL::to($product->image_url) }}" width="100px"></td>
-                </tr>
-                @endif
+                
             </table>
-    </div>
     <div class="panel-footer">
         <button type="reset" class="btn btn-danger">ยกเลิก</button>
         <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>บันทึก</button>
     </div>
 </div>
 {!! Form::close() !!}
-@endsection
