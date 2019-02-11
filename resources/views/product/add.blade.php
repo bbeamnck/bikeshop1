@@ -1,4 +1,25 @@
+@extends("layouts.master")
+@section('title') Bikeshop | แก้ไขข้อมูลสินค้า@stop
+@section('content')
+<h1>แก้ไขสินค้า</h1>
+<ul class="breadcrumb">
+    <li><a href="{{ URL::to('product') }}">หน้าแรก</a></li>
+    <li class="active">แก้ไขสินค้า</li>
+
+</ul>
+@if($errors->any())
+<div class="alert alert-danger">
+        @foreach ($errors->all() as $error)<div>{{ $error }}</div>@endforeach 
+</div>
+@endif
 {!! Form::open(array('action' => 'ProductController@insert','method' => 'post','enctype' => 'multipart/form-data')) !!}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">
+            <strong>ข้อมูลสินค้า</strong>
+        </div>
+    </div>
+        <div class="panel-body">
             <table>
                 <tr>
                     <td>{{ Form::label('code','รหัสสินค้า') }}</td>
@@ -32,3 +53,4 @@
     </div>
 </div>
 {!! Form::close() !!}
+@endsection
